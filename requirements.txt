@@ -1,0 +1,5 @@
+openai
+gradio
+scikit-learn
+httpx[socks]
+python-dotenv
