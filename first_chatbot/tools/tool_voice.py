@@ -1,11 +1,10 @@
 import json
 import openai
-import os
 import utils
 import time
 import gradio as gr
 
-client = openai.OpenAI(api_key=os.getenv("api_key"))
+client = utils.get_openai_client()
 
 
 def tool_voice(param, request: gr.Request):
@@ -20,8 +19,10 @@ def tool_voice(param, request: gr.Request):
     file_path = utils.save_file_by_content(
         "firt_chatbot", str(time.time())+".mp3", voice.content)
 
+    print(file_path)
+
     return {
-        "url": utils.create_file_url_path(request, file_path),
+        "url": f'''<audio src="{file_path}" controls />''',
     }
 
 

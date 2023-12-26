@@ -1,5 +1,6 @@
 import time
 from gradio import Request
+import openai
 
 
 def gradio_history_to_openai_messages(history, system_role):
@@ -36,3 +37,10 @@ def save_file_by_content(chatbot_name, file_name, content):
 
 def create_file_url_path(req: Request, file_path: str):
     return req.request.base_url._url[:-1] + file_path
+
+
+def get_openai_client():
+    return openai.OpenAI(
+        api_key="sk-6V2exWFBSa2lmuZ7C0D773D1BaEd4fB7A1B6A0A265D550C6",
+        base_url="https://key.wenwen-ai.com/v1"
+    )

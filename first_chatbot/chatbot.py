@@ -12,9 +12,7 @@ class Chatbot:
         self.name = "菠菜的Chatbot"
         self.desc = "菠菜的第一个聊天机器人"
         self.gpt_model = "gpt-3.5-turbo"
-        self.client = openai.OpenAI(
-            api_key=os.getenv("api_key"),
-        )
+        self.client = utils.get_openai_client()
         self.tools = {
             "tool_img": [tool_img.tool_img, tool_img.desc_tool_img],
             "tool_voice": [tool_voice.tool_voice, tool_voice.desc_tool_voice],

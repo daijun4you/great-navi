@@ -1,12 +1,11 @@
 import json
 import openai
-import os
 import utils
 import time
 import base64
 import gradio as gr
 
-client = openai.OpenAI(api_key=os.getenv("api_key"))
+client = utils.get_openai_client()
 
 
 def tool_img(param, request: gr.Request):
@@ -24,7 +23,7 @@ def tool_img(param, request: gr.Request):
         "firt_chatbot", str(time.time())+".png", base64.b64decode(image_response.data[0].b64_json))
 
     return {
-        "url": utils.create_file_url_path(request, file_path)
+        "url": f'''<img src="{file_path}" />''',
     }
 
 
