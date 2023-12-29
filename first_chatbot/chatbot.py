@@ -5,6 +5,7 @@ import json
 from first_chatbot.tools import tool_img
 from first_chatbot.tools import tool_voice
 import gradio as gr
+from first_chatbot.rag import rag
 
 
 class Chatbot:
@@ -18,13 +19,14 @@ class Chatbot:
             "tool_voice": [tool_voice.tool_voice, tool_voice.desc_tool_voice],
         }
 
-    def handle_msg(self, user_msg, history, request: gr.Request, *arg):
+    def handle_msg(self, user_prompt, history, request: gr.Request, *arg):
         # 构建GPT的上下文
         messages = utils.gradio_history_to_openai_messages(
             history, self.get_system_role())
+
         messages.append({
             "role": "user",
-            "content": user_msg
+            "content": rag.RAG().rag(user_prompt, messages)
         })
 
         # 请求GPT，获取结果

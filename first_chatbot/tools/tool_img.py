@@ -11,7 +11,7 @@ client = utils.get_openai_client()
 def tool_img(param, request: gr.Request):
     image_response = client.images.generate(
         prompt=json.loads(param)["desc"],
-        model="dall-e-3",
+        model="dall-e-2",
         n=1,
         quality="standard",
         response_format="b64_json",
