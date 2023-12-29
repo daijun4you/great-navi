@@ -44,3 +44,16 @@ def get_openai_client():
         api_key="sk-6V2exWFBSa2lmuZ7C0D773D1BaEd4fB7A1B6A0A265D550C6",
         base_url="https://key.wenwen-ai.com/v1"
     )
+
+
+def get_embeddings(embedding_input):
+    embeddings = get_openai_client().embeddings.create(
+        model="text-embedding-ada-002",
+        input=embedding_input,
+    )
+
+    embeddings_result = []
+    for i in embeddings.data:
+        embeddings_result.append(i.embedding)
+
+    return embeddings_result

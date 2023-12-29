@@ -2,3 +2,5 @@
 **/__pycache__/*
 /static/*.mp3
 /static/*.png
+**/*.bin
+**/*.sqlite3
