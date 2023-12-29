@@ -1,3 +1,23 @@
-面向程序员的大模型应用开发系统课程
+## 安装方式
 
-联系菠菜老师，微信：bocai6572
+```shell
+git clone https://github.com/daijun4you/great-navi
+```
+
+## 安装依赖（建议使用之前的课程Anaconda）
+
+```shell
+cd great-navi
+pip install --upgrade -r requirements.txt
+```
+
+## 运行项目
+
+```shell
+cd great-navi
+python chatbot_manager.py
+```
+
+## 访问地址
+
+浏览器打开：<http://localhost:8123>
